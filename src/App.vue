@@ -2,11 +2,13 @@
 import { ref, computed } from "vue";
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
+import Timer from "./pages/Timer.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = {
   '/': Home,
-  '/about': About
+  '/about': About,
+  '/timer': Timer
 }
 
 const currentPath = ref(window.location.hash)

@@ -5,6 +5,7 @@ import Card from "../shared/ui/Card.vue";
 <template>
   <section class="cards-container">
     <Card link="#/" image="https://cdn-icons-png.flaticon.com/512/763/763965.png" card-title="Home"/>
+    <Card link="#/timer" image="https://cdn-icons-png.flaticon.com/512/763/763965.png" card-title="Timer"/>
     <Card link="#/about" image="https://cdn-icons-png.flaticon.com/512/763/763965.png" card-title="About"/>
     <Card link="#/non-existent-path" image="https://cdn-icons-png.flaticon.com/512/763/763965.png" card-title="Broken Link"/>
   </section>
