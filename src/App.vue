@@ -2,7 +2,7 @@
 import { ref, computed } from "vue";
 import Home from "./pages/Home.vue";
 import About from "./pages/About.vue";
-import Timer from "./pages/Timer.vue";
+import Timer from "./pages/Training.vue";
 import NotFound from "./pages/NotFound.vue";
 
 const routes = {
