@@ -1,6 +1,8 @@
 <script setup>
   import { ref, reactive } from "vue";
 
+  import Timer from "../shared/ui/Timer.vue";
+
   const trainingTypes = reactive({
     AMRAP: "AMRAP",
     FT: "For Time",
@@ -11,9 +13,10 @@
   let newSessionData = reactive({
     type: "",
     for: 1,
-    every: 1
+    loops: 1
   })
   let isNewSession = ref(false);
+  let startTraining = ref(false);
   let sessionsList = reactive([])
 
   function addSessionToList() {
@@ -25,7 +28,7 @@
   function resetFormData() {
     newSessionData.type = "";
     newSessionData.for = 1;
-    newSessionData.every = 1;
+    newSessionData.loops = 1;
   }
 
 </script>
@@ -33,9 +36,11 @@
 <template>
   <h1>Timer</h1>
 
+  <Timer v-if="startTraining" :sessions-list="sessionsList" />
+
   <div v-for="session in sessionsList" style="width: 100%; border: 1px solid white; border-radius: 8px; display:flex; flex-direction: column; justify-content: center; align-items: center;">
     <h3>{{ session.type }}</h3>
-    <p v-if="session.type === trainingTypes.EMOM">Every: {{ session.every }} minutes</p>
+    <p v-if="session.type === trainingTypes.EMOM">Every: {{ session.loops }} minutes</p>
     <p>For: {{ session.for }} minutes</p>
   </div>
 
@@ -61,12 +66,12 @@
 
       <fieldset v-if="newSessionData.type === trainingTypes.EMOM">
         <label for="loops">Every minutes</label>
-        <input type="number" min="1" id="loops" v-model="newSessionData.every">
+        <input type="number" min="1" id="loops" v-model="newSessionData.loops">
       </fieldset>
     </fieldset>
 
     <button type="button" v-if="isNewSession" v-on:click="addSessionToList">Add to session</button>
-    <button type="button">Start training!</button>
+    <button type="button" v-on:click="startTraining = !startTraining">Start training!</button>
   </form>
 </template>
 
